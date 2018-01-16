@@ -11,27 +11,27 @@ A small library of extensions to Ruby's Array and String classes that allow inde
 === Indent
 
   # Default indentation is 2 spaces
-    "test".indent # => "  test"
+    "test".indentx # => "  test"
 
   # Amount of indentation can be changed
-    "test".indent(3) # => "   test"
+    "test".indentx(3) # => "   test"
 
   # Indentation character (or string) is set as the second parameter of indent.
-    "test".indent(2, "\t") # => "\t\ttest"
+    "test".indentx(2, "\t") # => "\t\ttest"
   
   # Operates on multi-line strings
-    "this\nis\na\ntest".indent # => "  this\n  is\n  a\n  test"
+    "this\nis\na\ntest".indentx # => "  this\n  is\n  a\n  test"
 
   # Indent method accepts negative values (Removes tabs, spaces, and supplied indentation string)
-    "  test".indent(-1) # => " test"
-    "\t test".indent(-5) # => "test"
-    "\t--     Test".indent(-10) # => "--     Test"
-    "\t--     Test".indent(-10, '-') # => "Test"
-    "--- Test".indent(-2, '--') # => "- Test"
+    "  test".indentx(-1) # => " test"
+    "\t test".indentx(-5) # => "test"
+    "\t--     Test".indentx(-10) # => "--     Test"
+    "\t--     Test".indentx(-10, '-') # => "Test"
+    "--- Test".indentx(-2, '--') # => "- Test"
 
   # Operates on arrays
-    ["one", "two"].indent # => ["  one", "  two"]
-    [["one", "  two"], ["uno", "\t\tdos"]].indent # => [["  one", "    two"], ["  uno", "  \t\tdos"]]
+    ["one", "two"].indentx # => ["  one", "  two"]
+    [["one", "  two"], ["uno", "\t\tdos"]].indentx # => [["  one", "    two"], ["  uno", "  \t\tdos"]]
 
 
 === Reset Indentation
@@ -69,7 +69,7 @@ A small library of extensions to Ruby's Array and String classes that allow inde
     vars = ["var1", "var2", "var3", "var4"]
     method_def = ["def add_up(#{vars.join(', ')})"]
     method_body = vars.append_separator(" + ")
-    method_def += method_body.indent
+    method_def += method_body.indentx
     method_def << "end"
     method_def.join("\n") # =>
       # def add_up(var1, var2, var3, var4)

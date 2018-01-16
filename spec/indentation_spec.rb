@@ -5,54 +5,54 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 describe "Single-line String indentation" do
   
   it "should indent a string using 2 spaces as the default" do
-    "test string".indent.should == "  test string"
+    "test string".indentx.should == "  test string"
   end
   
   it "should indent a given string the passed amount of indentation" do
-    "test string".indent(3).should == "   test string"
-    "test string".indent(0).should == "test string"
+    "test string".indentx(3).should == "   test string"
+    "test string".indentx(0).should == "test string"
   end
   
   it "should indent a string using 1 tab as default, if tabs were specified but an amount was not" do
-    "test string".indent(nil, "\t").should == "\ttest string"
+    "test string".indentx(nil, "\t").should == "\ttest string"
   end
   
   it "should indent a string the passed amount of tabbed indentation" do
-    "test string ".indent(3, "\t").should == "\t\t\ttest string "
-    "test string ".indent(0, "\t").should == "test string "
+    "test string ".indentx(3, "\t").should == "\t\t\ttest string "
+    "test string ".indentx(0, "\t").should == "test string "
   end
   
   it "should indent a string using the passed indentation character" do
-    "test string".indent(1, "!").should == "!test string"
-    "test string".indent(2, "--").should == "----test string"
+    "test string".indentx(1, "!").should == "!test string"
+    "test string".indentx(2, "--").should == "----test string"
   end
   
   it "should remove tab and space indentation if a negative amount is specified" do
-    "   test string ".indent(-2).should == " test string "
-    "   test string ".indent(-3).should == "test string "
-    "   test string ".indent(-4).should == "test string "
+    "   test string ".indentx(-2).should == " test string "
+    "   test string ".indentx(-3).should == "test string "
+    "   test string ".indentx(-4).should == "test string "
     
-    "\t  test string ".indent(-2).should == " test string "
-    "\t  test string ".indent(-3).should == "test string "
-    "\t  test string ".indent(-4).should == "test string "
+    "\t  test string ".indentx(-2).should == " test string "
+    "\t  test string ".indentx(-3).should == "test string "
+    "\t  test string ".indentx(-4).should == "test string "
 
-    " \t test string ".indent(-2).should == " test string "
-    " \t test string ".indent(-3).should == "test string "
-    " \t test string ".indent(-4).should == "test string "
+    " \t test string ".indentx(-2).should == " test string "
+    " \t test string ".indentx(-3).should == "test string "
+    " \t test string ".indentx(-4).should == "test string "
     
-    "  \ttest string ".indent(-2).should == "\ttest string "
-    "  \ttest string ".indent(-3).should == "test string "
-    "  \ttest string ".indent(-4).should == "test string "
+    "  \ttest string ".indentx(-2).should == "\ttest string "
+    "  \ttest string ".indentx(-3).should == "test string "
+    "  \ttest string ".indentx(-4).should == "test string "
     
-    "\t\t\ttest string ".indent(-2).should == "\ttest string "
-    "\t\t\ttest string ".indent(-3).should == "test string "
-    "\t\t\ttest string ".indent(-4).should == "test string "
+    "\t\t\ttest string ".indentx(-2).should == "\ttest string "
+    "\t\t\ttest string ".indentx(-3).should == "test string "
+    "\t\t\ttest string ".indentx(-4).should == "test string "
   end
   
   it "should remove tab, space, and the specified indentation type if a negative amount and indentation character is specified" do
-    "   \t\t\t---my string".indent(-8, '-').should == "-my string"
-    "   \t\t\t---my string".indent(-8).should == "---my string"
-    "   --- my string".indent(-4, "---").should == " my string"
+    "   \t\t\t---my string".indentx(-8, '-').should == "-my string"
+    "   \t\t\t---my string".indentx(-8).should == "---my string"
+    "   --- my string".indentx(-4, "---").should == " my string"
   end
   
 end
@@ -60,18 +60,18 @@ end
 describe "Multi-line String indentation" do
   
   it "should indent each line within the given string" do
-    "  this\nis\na\n test\n".indent.should == "    this\n  is\n  a\n   test\n  "
-    "  this\nis\na\n test\n".indent(3).should == "     this\n   is\n   a\n    test\n   "
-    "  this\nis\na\n test\n".indent(3, "\t").should == "\t\t\t  this\n\t\t\tis\n\t\t\ta\n\t\t\t test\n\t\t\t"
+    "  this\nis\na\n test\n".indentx.should == "    this\n  is\n  a\n   test\n  "
+    "  this\nis\na\n test\n".indentx(3).should == "     this\n   is\n   a\n    test\n   "
+    "  this\nis\na\n test\n".indentx(3, "\t").should == "\t\t\t  this\n\t\t\tis\n\t\t\ta\n\t\t\t test\n\t\t\t"
   end
   
   it "should de-indent each line within the given string" do
-    "   \t\t\t This\n   is \n a\ntest\n ".indent(-1).should == "  \t\t\t This\n  is \na\ntest\n"
-    "   \t\t\t This\n   is \n a\ntest\n ".indent(-2).should == " \t\t\t This\n is \na\ntest\n"
-    "   \t\t\t This\n   is \n a\ntest\n ".indent(-3).should == "\t\t\t This\nis \na\ntest\n"
-    "   \t\t\t This\n   is \n a\ntest\n ".indent(-6).should == " This\nis \na\ntest\n"
-    "   \t\t\t This\n   is \n a\ntest\n ".indent(-7).should == "This\nis \na\ntest\n"
-    "   \t\t\t This\n   is \n a\ntest\n ".indent(-8).should == "This\nis \na\ntest\n"
+    "   \t\t\t This\n   is \n a\ntest\n ".indentx(-1).should == "  \t\t\t This\n  is \na\ntest\n"
+    "   \t\t\t This\n   is \n a\ntest\n ".indentx(-2).should == " \t\t\t This\n is \na\ntest\n"
+    "   \t\t\t This\n   is \n a\ntest\n ".indentx(-3).should == "\t\t\t This\nis \na\ntest\n"
+    "   \t\t\t This\n   is \n a\ntest\n ".indentx(-6).should == " This\nis \na\ntest\n"
+    "   \t\t\t This\n   is \n a\ntest\n ".indentx(-7).should == "This\nis \na\ntest\n"
+    "   \t\t\t This\n   is \n a\ntest\n ".indentx(-8).should == "This\nis \na\ntest\n"
   end
 end
 
@@ -81,7 +81,7 @@ describe "Single-line Array indentation" do
   end
   
   it "should indent each element 2 spaces by default" do
-    indented_array = @test_array.indent
+    indented_array = @test_array.indentx
     
     indented_array[0].should == '  ali'
     indented_array[1].should == '    bob'
@@ -89,7 +89,7 @@ describe "Single-line Array indentation" do
   end
   
   it "should indent each element using 1 tab as default, if tabs were specified but an amount was not" do
-    indented_array = @test_array.indent(nil, "\t")
+    indented_array = @test_array.indentx(nil, "\t")
     
     indented_array[0].should == "\tali"
     indented_array[1].should == "\t  bob"
@@ -97,14 +97,14 @@ describe "Single-line Array indentation" do
   end
   
   it "should remove indentation if a negative amount was specified" do
-    indented_array = @test_array.indent.indent(1, "\t").indent(3) # => ["   \t  ali", "   \t    bob", "   \t  charlie"]
+    indented_array = @test_array.indentx.indentx(1, "\t").indentx(3) # => ["   \t  ali", "   \t    bob", "   \t  charlie"]
     # Check that the array was correctly created
     indented_array[0].should == "   \t  ali"
     indented_array[1].should == "   \t    bob"
     indented_array[2].should == "   \t  charlie"
     
     # De-indent the array
-    deindented_array = indented_array.indent(-7)
+    deindented_array = indented_array.indentx(-7)
     deindented_array[0].should == "ali"
     deindented_array[1].should == " bob"
     deindented_array[2].should == "charlie"
@@ -118,7 +118,7 @@ describe "Multi-line Array indentation" do
   end
   
   it "should indent each line of each element 2 spaces by default" do
-    indented_array = @test_array.indent
+    indented_array = @test_array.indentx
     
     indented_array[0].should == "  \n   \t\n   test\n  "
     indented_array[1].should == "   One\n    Two\n     Three"
@@ -126,7 +126,7 @@ describe "Multi-line Array indentation" do
   end
   
   it "should indent each line of each element using 1 tab as default, if tabs were specified but an amount was not" do
-    indented_array = @test_array.indent(nil, "\t")
+    indented_array = @test_array.indentx(nil, "\t")
     
     indented_array[0].should == "\t\n\t \t\n\t test\n\t"
     indented_array[1].should == "\t One\n\t  Two\n\t   Three"
@@ -134,7 +134,7 @@ describe "Multi-line Array indentation" do
   end
   
   it "should remove indentation if a negative amount was specified" do
-    deindented_array = @test_array.indent(-1)
+    deindented_array = @test_array.indentx(-1)
     
     deindented_array[0].should == "\n\t\ntest\n"
     deindented_array[1].should == "One\n Two\n  Three"
@@ -144,7 +144,7 @@ describe "Multi-line Array indentation" do
   it "should indent any contained arrays if they exist" do
     array = @test_array
     array << ["This", 'is', "a", "test"]
-    indented_array = array.indent
+    indented_array = array.indentx
     
     indented_array[3][0].should == "  This"
     indented_array[3][1].should == "  is"

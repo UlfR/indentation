@@ -8,7 +8,7 @@ module Indentation
   # Required String
   GEM_NAME = "indentation"
   # Required String
-  VERSION = '0.1.2'
+  VERSION = '0.1.3'
   # Optional String or Array of Strings
   AUTHORS = ["Sam Dana"]
   # Optional String or Array of Strings

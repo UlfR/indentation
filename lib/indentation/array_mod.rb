@@ -35,9 +35,9 @@ class Array
   #         If set to a negative value, removes that many of the specified indentation character,
   #         tabs, or spaces from the beginning of the string
   # * i_char - Character (or string) to use for indentation
-  def indent(num = nil, i_char = ' ')
+  def indentx(num = nil, i_char = ' ')
     self.collect do |array_element|
-      array_element.indent(num, i_char)
+      array_element.indentx(num, i_char)
     end
   end
   
@@ -48,9 +48,9 @@ class Array
   #         If set to a negative value, removes that many of the specified indentation character,
   #         tabs, or spaces from the beginning of the string
   # * i_char - Character (or string) to use for indentation
-  def indent!(num = nil, i_char = ' ')
+  def indentx!(num = nil, i_char = ' ')
     self.collect! do |array_element|
-      array_element.indent!(num, i_char)
+      array_element.indentx!(num, i_char)
     end
   end
   
@@ -62,13 +62,13 @@ class Array
   # Find the least indentation of all elements and remove that amount (if any)
   # Can pass an optional modifier that changes the indentation amount removed
   def reset_indentation(modifier = 0)
-    indent(-find_least_indentation + modifier)
+    indentx(-find_least_indentation + modifier)
   end
   
   # Replaces the current array with one that has its indentation reset
   # Can pass an optional modifier that changes the indentation amount removed
   def reset_indentation!(modifier = 0)
-    indent!(-find_least_indentation + modifier)
+    indentx!(-find_least_indentation + modifier)
   end
   
   # Join an array of strings using English list punctuation.
